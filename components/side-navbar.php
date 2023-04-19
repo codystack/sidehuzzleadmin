@@ -15,7 +15,7 @@
             <div class="navbar-vertical-content">
                 <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
                     <div class="nav-item">
-                        <a class="nav-link " href="dashboard" data-placement="left">
+                        <a class="nav-link <?php if($page=='Dashboard'){echo 'active';}?>" href="dashboard" data-placement="left">
                             <i class="bi-grid-1x2 nav-icon"></i>
                             <span class="nav-link-title">Dashboard</span>
                         </a>
@@ -28,20 +28,20 @@
                         </a>
 
                         <div id="navbarVerticalMenuPagesProjectsMenu" class="nav-collapse collapse" data-bs-parent="#navbarVerticalMenuPagesMenu" hs-parent-area="#navbarVerticalMenu" style="">
-                        <a class="nav-link " href="all-gigs">All gigs</a>
-                        <a class="nav-link " href="">Categories</a>
+                        <a class="nav-link <?php if($page=='Gigs'){echo 'active';}?>" href="all-gigs">All gigs</a>
+                        <a class="nav-link <?php if($page=='Categories'){echo 'active';}?>" href="">Categories</a>
                         </div>
                     </div>
 
                     <div class="nav-item">
-                        <a class="nav-link " href="users" data-placement="left">
+                        <a class="nav-link <?php if($page=='Users'){echo 'active';}?>" href="users" data-placement="left">
                             <i class="bi-people nav-icon"></i>
                             <span class="nav-link-title">Users</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a class="nav-link " href="gigs" data-placement="left">
+                        <a class="nav-link <?php if($page=='Referrals'){echo 'active';}?>" href="gigs" data-placement="left">
                             <i class="bi-link nav-icon"></i>
                             <span class="nav-link-title">Referrals</span>
                         </a>
@@ -51,16 +51,16 @@
                     <small class="bi-three-dots nav-subtitle-replacer"></small>
 
                     <div class="nav-item">
-                        <a class="nav-link " href="profile" data-placement="left">
+                        <a class="nav-link <?php if($page=='Profile'){echo 'active';}?>" href="profile" data-placement="left">
                             <i class="bi-person nav-icon"></i>
                             <span class="nav-link-title">Profile</span>
                         </a>
                     </div>
 
                     <div class="nav-item">
-                        <a class="nav-link " href="gigs" data-placement="left">
-                            <i class="bi-stickies nav-icon"></i>
-                            <span class="nav-link-title">Gigs</span>
+                        <a class="nav-link <?php if($page=='Settings'){echo 'active';}?>" href="gigs" data-placement="left">
+                            <i class="bi-gear nav-icon"></i>
+                            <span class="nav-link-title">Settings</span>
                         </a>
                     </div>
                 </div>
