@@ -131,64 +131,23 @@ require_once "./auth/login.php";
     </header>
 
     <main id="content" role="main" class="main pt-0">
-        <div class="container-fluid px-3">
+        <div class="container-fluid px-0">
             <div class="row">
-                <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center min-vh-lg-100 position-relative bg-light px-0">
+                <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center min-vh-lg-100 position-relative bg-light px-0" style="background-image: url(assets/img/loginbg.jpg); background-size: cover; background-position: center;">
                     <div class="position-absolute top-0 start-0 end-0 mt-3 mx-3">
                         <div class="d-none d-lg-flex justify-content-between">
                             <a href="./">
-                                <img class="w-100" src="assets/img/logodark.svg" alt="Logo" data-hs-theme-appearance="default" style="min-width: 11rem; max-width: 11rem;">
+                                <img class="w-100" src="assets/img/logolight.svg" alt="Logo" data-hs-theme-appearance="default" style="min-width: 11rem; max-width: 11rem;">
                                 <img class="w-100" src="assets/img/logolight.svg" alt="Logo" data-hs-theme-appearance="dark" style="min-width: 11rem; max-width: 11rem;">
                             </a>
                         </div>
                     </div>
 
-                    <div style="max-width: 23rem;">
-                        <div class="text-center mb-5">
-                        <img class="img-fluid" src="assets/svg/illustrations/oc-chatting.svg" alt="Image Description" style="width: 12rem;" data-hs-theme-appearance="default">
-                        <img class="img-fluid" src="assets/svg/illustrations-light/oc-chatting.svg" alt="Image Description" style="width: 12rem;" data-hs-theme-appearance="dark">
-                        </div>
+                    <div style="max-width: 23rem;" class="position-absolute bottom-0 start-5">
 
                         <div class="mb-5">
-                        <h2 class="display-5">Build digital products with:</h2>
+                            <h2 class="display-5 text-white">The best way to predict the future is to invent it.</h2>
                         </div>
-
-                        <!-- List Checked -->
-                        <ul class="list-checked list-checked-lg list-checked-primary list-py-2">
-                        <li class="list-checked-item">
-                            <span class="d-block fw-semibold mb-1">All-in-one tool</span>
-                            Build, run, and scale your apps - end to end
-                        </li>
-
-                        <li class="list-checked-item">
-                            <span class="d-block fw-semibold mb-1">Easily add &amp; manage your services</span>
-                            It brings together your tasks, projects, timelines, files and more
-                        </li>
-                        </ul>
-                        <!-- End List Checked -->
-
-                        <div class="row justify-content-between mt-5 gx-3">
-                        <div class="col">
-                            <img class="img-fluid" src="assets/svg/brands/gitlab-gray.svg" alt="Logo">
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                            <img class="img-fluid" src="assets/svg/brands/fitbit-gray.svg" alt="Logo">
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                            <img class="img-fluid" src="assets/svg/brands/flow-xo-gray.svg" alt="Logo">
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                            <img class="img-fluid" src="assets/svg/brands/layar-gray.svg" alt="Logo">
-                        </div>
-                        <!-- End Col -->
-                        </div>
-                        <!-- End Row -->
                     </div>
                 </div>
 
@@ -241,7 +200,7 @@ require_once "./auth/login.php";
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label" for="signinSrEmail">Your email</label>
+                                <label class="form-label" for="signinSrEmail">Email</label>
                                 <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail" tabindex="1" placeholder="email@address.com" aria-label="email@address.com" required>
                                 <span class="invalid-feedback">Please enter a valid email address.</span>
                             </div>
@@ -270,7 +229,7 @@ require_once "./auth/login.php";
                         
 
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-lg" name="admin_login_btn">Sign in</button>
+                                <button type="submit" class="btn btn-dark btn-lg" name="admin_login_btn">Sign in</button>
                             </div>
                         </form>
                         
