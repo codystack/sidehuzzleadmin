@@ -105,12 +105,14 @@ include "./components/side-navbar.php";
                                     $registrationDate = strtotime($dateCreated);
                                     switch ($verified) {
                                         case "1";
-                                            $class  = 'bg-success';
-                                            $text = 'Verified';
+                                            $class  = 'bg-soft-success';
+                                            $text = 'text-success';
+                                            $status = 'Verified';
                                             break;
                                         case "0";
-                                            $class  = 'bg-warning';
-                                            $text = 'Not Verified';
+                                            $class  = 'bg-soft-danger';
+                                            $text = 'text-danger';
+                                            $status = 'Not verified';
                                             break;
                                         default:
                                             $class  = '';
@@ -125,10 +127,10 @@ include "./components/side-navbar.php";
                             </td>";
                             echo "<td class='table-column-ps-0'>".$user_id."</td>";
                             echo "<td>
-                                <a class='d-flex align-items-center' href='user-profile.html'>
+                                <a class='d-flex align-items-center' href='user-profile?id=$id'>
                                     <div class='flex-shrink-0'>
                                         <div class='avatar avatar-sm avatar-circle'>
-                                            <img class='avatar-img' src='$picture' alt='Image Description'>
+                                            <img class='avatar-img' src='../sidehuzzle/$picture' alt='Image Description'>
                                         </div>
                                     </div>
                                     <div class='flex-grow-1 ms-3'>
@@ -137,7 +139,7 @@ include "./components/side-navbar.php";
                                 </a>
                             </td>";
                             echo "<td>
-                                <span class='legend-indicator $class'></span>$text
+                                <span class=\"badge $class $text\">$status</span>
                             </td>";
                             echo "<td>".$accountType."</td>";
                             echo "<td>".$email."</td>";
