@@ -115,7 +115,7 @@ include "./components/side-navbar.php";
                         </div>
                         
                         <label class="avatar avatar-xxl avatar-circle avatar-uploader profile-cover-avatar" for="editAvatarUploaderModal">
-                            <img id="editAvatarImgModal" class="avatar-img" src="../sidehuzzle/<?php echo $picture; ?>" alt="User Avatar">
+                            <img id="editAvatarImgModal" class="avatar-img" src="https://sidehuzzlecanada.com/<?php echo $picture; ?>" alt="User Avatar">
                         </label>
                         
                         
