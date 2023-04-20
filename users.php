@@ -130,7 +130,7 @@ include "./components/side-navbar.php";
                                 <a class='d-flex align-items-center' href='user-profile?id=$id'>
                                     <div class='flex-shrink-0'>
                                         <div class='avatar avatar-sm avatar-circle'>
-                                            <img class='avatar-img' src='../sidehuzzle/$picture' alt='Image Description'>
+                                            <img class='avatar-img' src='https://sidehuzzlecanada.com/$picture' alt='Image Description'>
                                         </div>
                                     </div>
                                     <div class='flex-grow-1 ms-3'>
