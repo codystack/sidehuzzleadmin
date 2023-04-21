@@ -74,219 +74,183 @@ include "./components/side-navbar.php";
 
         <!-- Card -->
         <div class="card mb-3 mb-lg-5">
-            <!-- Header -->
             <div class="card-header">
-            <div class="row justify-content-between align-items-center flex-grow-1">
-                <div class="col-md">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="card-header-title">Users</h4>
-
-                    <!-- Datatable Info -->
-                    <div id="datatableCounterInfo" style="display: none;">
-                    <div class="d-flex align-items-center">
-                        <span class="fs-6 me-3">
-                        <span id="datatableCounter">0</span>
-                        Selected
-                        </span>
-                        <a class="btn btn-outline-danger btn-sm" href="javascript:;">
-                        <i class="tio-delete-outlined"></i> Delete
-                        </a>
-                    </div>
-                    </div>
-                    <!-- End Datatable Info -->
-                </div>
-                </div>
-                <!-- End Col -->
-
-                <div class="col-auto">
-                <!-- Filter -->
-                <div class="row align-items-sm-center">
-                    <div class="col-sm-auto">
-                    <div class="row align-items-center gx-0">
-                        <div class="col">
-                        <span class="text-secondary me-2">Status:</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-auto">
-                        <!-- Select -->
-                        <div class="tom-select-custom tom-select-custom-end">
-                            <select class="js-select js-datatable-filter form-select form-select-sm form-select-borderless" data-target-column-index="2" data-target-table="datatable" autocomplete="off" data-hs-tom-select-options='{
-                                    "searchInDropdown": false,
-                                    "hideSearch": true,
-                                    "dropdownWidth": "10rem"
-                                    }'>
-                            <option value="null" selected>All</option>
-                            <option value="successful">Successful</option>
-                            <option value="overdue">Overdue</option>
-                            <option value="pending">Pending</option>
-                            </select>
-                        </div>
-                        <!-- End Select -->
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Row -->
-                    </div>
-                    <!-- End Col -->
-
-                    <div class="col-sm-auto">
-                    <div class="row align-items-center gx-0">
-                        <div class="col">
-                        <span class="text-secondary me-2">Signed up:</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-auto">
-                        <!-- Select -->
-                        <div class="tom-select-custom tom-select-custom-end">
-                            <select class="js-select js-datatable-filter form-select form-select-sm form-select-borderless" data-target-column-index="5" data-target-table="datatable" autocomplete="off" data-hs-tom-select-options='{
-                                    "searchInDropdown": false,
-                                    "hideSearch": true,
-                                    "dropdownWidth": "10rem"
-                                    }'>
-                            <option value="null" selected>All</option>
-                            <option value="1 year ago">1 year ago</option>
-                            <option value="6 months ago">6 months ago</option>
-                            </select>
-                        </div>
-                        <!-- End Select -->
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Row -->
-                    </div>
-                    <!-- End Col -->
-
+                <div class="row justify-content-between align-items-center flex-grow-1">
                     <div class="col-md">
-                    <form>
-                        <!-- Search -->
-                        <div class="input-group input-group-merge input-group-flush">
-                        <div class="input-group-prepend input-group-text">
-                            <i class="bi-search"></i>
-                        </div>
-                        <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
-                        </div>
-                        <!-- End Search -->
-                    </form>
-                    </div>
-                    <!-- End Col -->
-                </div>
-                <!-- End Filter -->
-                </div>
-                <!-- End Col -->
-            </div>
-            <!-- End Row -->
-            </div>
-            <!-- End Header -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="card-header-title">Top 5 Gigs</h4>
 
-            <!-- Table -->
+                            <div id="datatableCounterInfo" style="display: none;">
+                                <div class="d-flex align-items-center">
+                                    <span class="fs-6 me-3">
+                                    <span id="datatableCounter">0</span>
+                                    Selected
+                                    </span>
+                                    <a class="btn btn-outline-danger btn-sm" href="javascript:;">
+                                    <i class="tio-delete-outlined"></i> Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="row align-items-sm-center">
+                            <div class="col-md">
+                                <form>
+                                    <div class="input-group input-group-merge input-group-flush">
+                                        <div class="input-group-prepend input-group-text">
+                                            <i class="bi-search"></i>
+                                        </div>
+                                        <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-sm-auto">
+                                <div class="row align-items-center gx-0">
+                                    <div class="col">
+                                        <a href="all-gigs" class="btn btn-dark me-2">View all</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
             <div class="table-responsive datatable-custom">
-            <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
-                    "columnDefs": [{
-                        "targets": [0, 1, 4],
-                        "orderable": false
-                        }],
-                    "order": [],
-                    "info": {
-                        "totalQty": "#datatableWithPaginationInfoTotalQty"
-                    },
-                    "search": "#datatableSearch",
-                    "entries": "#datatableEntries",
-                    "pageLength": 8,
-                    "isResponsive": false,
-                    "isShowPaging": false,
-                    "pagination": "datatablePagination"
-                    }'>
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col" class="table-column-pe-0">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                            <label class="form-check-label" for="datatableCheckAll"></label>
-                        </div>
-                        </th>
-                        <th class="table-column-ps-0">Full name</th>
-                        <th>Status</th>
-                        <th>Type</th>
-                        <th>Email</th>
-                        <th>Signed up</th>
-                        <th>User ID</th>
-                    </tr>
-                </thead>
+                <table id="datatable" class="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
+                        "columnDefs": [{
+                            "targets": [0, 1, 4],
+                            "orderable": false
+                            }],
+                        "order": [],
+                        "info": {
+                            "totalQty": "#datatableWithPaginationInfoTotalQty"
+                        },
+                        "search": "#datatableSearch",
+                        "entries": "#datatableEntries",
+                        "pageLength": 8,
+                        "isResponsive": false,
+                        "isShowPaging": false,
+                        "pagination": "datatablePagination"
+                        }'>
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="table-column-pe-0">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
+                                    <label class="form-check-label" for="datatableCheckAll"></label>
+                                </div>
+                            </th>
+                            <th class="table-column-ps-0">SN</th>
+                            <th>Gig title</th>
+                            <th>Status</th>
+                            <th>Pay out</th>
+                            <th>Commission</th>
+                            <th>Signed up</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td class="table-column-pe-0">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="usersDataCheck2">
-                            <label class="form-check-label" for="usersDataCheck2"></label>
-                        </div>
-                        </td>
-                        <td class="table-column-ps-0">
-                        <a class="d-flex align-items-center" href="user-profile.html">
-                            <div class="flex-shrink-0">
-                            <div class="avatar avatar-sm avatar-circle">
-                                <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
+                    <tbody>
+                    <?php
+                        $gig_id = 1;
+                        $select_query = "SELECT * FROM gigs ORDER BY dateCreated DESC LIMIT 5";
+                        $result = mysqli_query($conn, $select_query);
+                        if (mysqli_num_rows($result) > 0) {
+                            // output data of each row
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $id = $row['id'];
+                                $title = $row['title'];
+                                $payOut = $row['payOut'];
+                                $email = $row['email'];
+                                $postAD = $row['postAD'];
+                                $commission = $row['commission'];
+                                $status = $row['status'];
+                                $dateCreated = $row['dateCreated'];
+                                $registrationDate = strtotime($dateCreated);
+                                switch ($status) {
+                                    case "Approved";
+                                        $class  = 'bg-soft-success';
+                                        $text = 'text-success';
+                                        break;
+                                    case "Pending";
+                                        $class  = 'bg-soft-warning';
+                                        $text = 'text-warning';
+                                        break;
+                                    case "Banned";
+                                        $class  = 'bg-soft-danger';
+                                        $text = 'text-danger';
+                                        break;
+                                    default:
+                                        $class  = '';
+                                }
+                    echo "<tr>";
+                    echo "<td class='table-column-pe-0'>
+                            <div class='form-check'>
+                                <input class='form-check-input' type='checkbox' value='' id='usersDataCheck2'>
+                                <label class='form-check-label' for='usersDataCheck2'></label>
                             </div>
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                            <h5 class="text-inherit mb-0">Amanda Harvey <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h5>
-                            </div>
-                        </a>
-                        </td>
-                        <td>
-                        <span class="legend-indicator bg-success"></span>Successful
-                        </td>
-                        <td>Unassigned</td>
-                        <td>amanda@site.com</td>
-                        <td>1 year ago</td>
-                        <td>67989</td>
-                    </tr>
-                </tbody>
-            </table>
+                        </td>";
+                        echo "<td class='table-column-ps-0'>".$gig_id."</td>";
+                        echo "<td>
+                            <a class='d-flex align-items-center' href='user-profile?id=$id'>
+                                <div class='flex-shrink-0'>
+                                    <div class='avatar avatar-sm avatar-circle'>
+                                        <img class='avatar-img' src='https://sidehuzzlecanada.com/$postAD' alt='Image Description'>
+                                    </div>
+                                </div>
+                                <div class='flex-grow-1 ms-3'>
+                                    <h5 class='text-inherit mb-0'>$title</h5>
+                                </div>
+                            </a>
+                        </td>";
+                        echo "<td>
+                            <span class=\"badge $class $text\">$status</span>
+                        </td>";
+                        echo "<td>".$payOut."</td>";
+                        echo "<td>".$commission."</td>";
+                        echo "<td>".date('j F Y', $registrationDate)."</td>";
+                    "</tr>";
+                            $gig_id++;
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </div>
-            <!-- End Table -->
-
-            <!-- Footer -->
+            
             <div class="card-footer">
-            <!-- Pagination -->
-            <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
-                <div class="col-sm mb-2 mb-sm-0">
-                <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
-                    <span class="me-2">Showing:</span>
+                <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+                    <div class="col-sm mb-2 mb-sm-0">
+                        <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
+                            <span class="me-2">Showing:</span>
+                            <div class="tom-select-custom">
+                                <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto" autocomplete="off" data-hs-tom-select-options='{
+                                            "searchInDropdown": false,
+                                            "hideSearch": true
+                                        }'>
+                                    <option value="4">4</option>
+                                    <option value="6">6</option>
+                                    <option value="8" selected>8</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
 
-                    <!-- Select -->
-                    <div class="tom-select-custom">
-                    <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto" autocomplete="off" data-hs-tom-select-options='{
-                                "searchInDropdown": false,
-                                "hideSearch": true
-                            }'>
-                        <option value="4">4</option>
-                        <option value="6">6</option>
-                        <option value="8" selected>8</option>
-                        <option value="12">12</option>
-                    </select>
+                            <span class="text-secondary me-2">of</span>
+
+                            <span id="datatableWithPaginationInfoTotalQty"></span>
+                        </div>
                     </div>
-                    <!-- End Select -->
 
-                    <span class="text-secondary me-2">of</span>
-
-                    <!-- Pagination Quantity -->
-                    <span id="datatableWithPaginationInfoTotalQty"></span>
+                    <div class="col-sm-auto">
+                        <div class="d-flex justify-content-center justify-content-sm-end">
+                            <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                <!-- End Col -->
-
-                <div class="col-sm-auto">
-                <div class="d-flex justify-content-center justify-content-sm-end">
-                    <!-- Pagination -->
-                    <nav id="datatablePagination" aria-label="Activity pagination"></nav>
-                </div>
-                </div>
-                <!-- End Col -->
-            </div>
-            <!-- End Pagination -->
             </div>
         </div>
     </div>
