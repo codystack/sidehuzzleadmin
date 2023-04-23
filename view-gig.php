@@ -28,9 +28,9 @@ include "./components/side-navbar.php";
                                 $gigID = $row['gigID'];
                                 $postAD = $row['postAD'];
                                 $commission = $row['commission'];
-                                $status = $row['status'];
                                 $dateCreated = $row['dateCreated'];
                                 $registrationDate = strtotime($dateCreated);
+                                $status = $row['status'];
                                 switch ($status) {
                                     case "Approved";
                                         $class  = 'bg-soft-success';
@@ -73,7 +73,7 @@ include "./components/side-navbar.php";
 
                     <ul class="nav nav-tabs align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link active" href="./user-profile.html">Gig Details</a>
+                            <a class="nav-link active">Gig Details</a>
                         </li>
 
                     <li class="nav-item ms-auto">
