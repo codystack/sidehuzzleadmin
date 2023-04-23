@@ -141,16 +141,6 @@ include "./components/side-navbar.php";
                             <div class="card-body">
                                 <div class="card card-sm mb-4">
                                     <img class="card-img-top" src="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" alt="Post AD">
-
-                                    <div class="card-body">
-                                        <div class="row col-divider text-center">
-                                            <div class="col">
-                                                <a class="text-body" href="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
-                                                    <i class="bi-eye"></i> view post ad
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="mb-4">
