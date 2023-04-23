@@ -35,8 +35,8 @@ include "./components/side-navbar.php";
                                 $gigDescription = $row['gigDescription'];
                                 $dateCreated = $row['dateCreated'];
                                 $registrationDate = strtotime($dateCreated);
-                                $status = $row['status'];
-                                switch ($status) {
+                                $gig_status = $row['status'];
+                                switch ($gig_status) {
                                     case "Approved";
                                         $class  = 'bg-soft-success';
                                         $text = 'text-success';
@@ -59,8 +59,7 @@ include "./components/side-navbar.php";
                     </div>
 
                     <h1 class="page-header-title"><?php echo $title; ?></h1>
-                    status: <span class="badge <?php echo $class; ?> <?php echo $text; ?>"><?php echo $status; ?></span>
-                    <span class="badge bg-soft-success text-success">testing</span>
+                    status: <span class="badge <?php echo $class; ?> <?php echo $text; ?>"><?php echo $gig_status; ?></span>
                 </div>
 
                 <div class="card mb-4">
