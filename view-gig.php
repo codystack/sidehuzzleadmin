@@ -140,7 +140,7 @@ include "./components/side-navbar.php";
                             </div>
                             <div class="card-body">
                                 <div class="card card-sm mb-4">
-                                    <img class="card-img-top" src="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" alt="Post AD">
+                                    <img class="card-img" src="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" alt="Post AD">
                                 </div>
 
                                 <div class="mb-4">
