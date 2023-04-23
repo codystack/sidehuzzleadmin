@@ -35,26 +35,22 @@ include "./components/side-navbar.php";
             </div>
 
             <div class="col-md-6 col-lg-4 mb-3 mb-lg-5">
-            <!-- Card -->
-            <div class="card">
-                <div class="card-body text-center">
-                <small class="text-cap">Gigs</small>
-                <?php
-                    $countGigs = mysqli_query($conn, "SELECT id FROM gigs");
-                    echo "<span class='js-counter d-block display-3 text-dark mb-2'>".mysqli_num_rows($countGigs)."</span>"
-                ?>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <small class="text-cap">Gigs</small>
+                        <?php
+                            $countGigs = mysqli_query($conn, "SELECT id FROM gigs");
+                            echo "<span class='js-counter d-block display-3 text-dark mb-2'>".mysqli_num_rows($countGigs)."</span>"
+                        ?>
 
-                <div class="row col-divider">
-                    <div class="col text-center">
-                    <span class="d-block">posted on sidehuzzle</span>
+                        <div class="row col-divider">
+                            <div class="col text-center">
+                                <span class="d-block">posted on sidehuzzle</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- End Row -->
-                </div>
             </div>
-            <!-- End Card -->
-            </div>
-            <!-- End Col -->
 
             <div class="col-md-6 col-lg-4 mb-3 mb-lg-5">
                 <div class="card">
@@ -147,10 +143,11 @@ include "./components/side-navbar.php";
                             </th>
                             <th class="table-column-ps-0">SN</th>
                             <th>Gig title</th>
+                            <th>Gig ID</th>
                             <th>Status</th>
                             <th>Pay out</th>
                             <th>Commission</th>
-                            <th>Signed up</th>
+                            <th>Created date</th>
                         </tr>
                     </thead>
 
@@ -165,7 +162,7 @@ include "./components/side-navbar.php";
                                 $id = $row['id'];
                                 $title = $row['title'];
                                 $payOut = $row['payOut'];
-                                $email = $row['email'];
+                                $gigID = $row['gigID'];
                                 $postAD = $row['postAD'];
                                 $commission = $row['commission'];
                                 $status = $row['status'];
@@ -196,7 +193,7 @@ include "./components/side-navbar.php";
                         </td>";
                         echo "<td class='table-column-ps-0'>".$gig_id."</td>";
                         echo "<td>
-                            <a class='d-flex align-items-center' href='user-profile?id=$id'>
+                            <a class='d-flex align-items-center' href='view-gig?id=$id'>
                                 <div class='flex-shrink-0'>
                                     <div class='avatar avatar-sm avatar-circle'>
                                         <img class='avatar-img' src='https://sidehuzzlecanada.com/$postAD' alt='Image Description'>
@@ -207,6 +204,7 @@ include "./components/side-navbar.php";
                                 </div>
                             </a>
                         </td>";
+                        echo "<td>".$gigID."</td>";
                         echo "<td>
                             <span class=\"badge $class $text\">$status</span>
                         </td>";

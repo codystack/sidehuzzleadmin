@@ -22276,7 +22276,7 @@ label.form-control {
 
 .nav-vertical.nav-pills .nav-link.active[aria-expanded=false],
 .nav-vertical.nav-pills .nav-link.active[aria-expanded=true] {
-    color: #377dff
+    color: #ff0000
 }
 
 .nav-vertical.nav-pills .nav-link.active[aria-expanded=false]:hover,

@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="nav-item">
-                        <a class="nav-link dropdown-toggle collapsed" href="#navbarVerticalMenuPagesProjectsMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectsMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesProjectsMenu">
+                        <a class="nav-link dropdown-toggle collapsed <?php if($page=='Gigs'){echo 'active';}?>" href="#navbarVerticalMenuPagesProjectsMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectsMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesProjectsMenu">
                             <i class="bi-briefcase nav-icon"></i>
                             <span class="nav-link-title">Gigs</span>
                         </a>
