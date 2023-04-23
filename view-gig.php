@@ -132,166 +132,140 @@ include "./components/side-navbar.php";
 
                 <div class="row">
                     <div class="col-lg-12">
-                    <!-- Card -->
-                    <div class="card mb-3 mb-lg-5">
-                    
-                        <div class="card-header">
-                            <h4 class="card-header-title">Gig information</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="card card-sm mb-4">
-                                <img class="card-img-top" src="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" alt="Post AD">
-
-                                <div class="card-body">
-                                    <div class="row col-divider text-center">
-                                        <div class="col">
-                                            <a class="text-body" href="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
-                                                <i class="bi-eye"></i> view post ad
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="card mb-3 mb-lg-5">
+                        
+                            <div class="card-header">
+                                <h4 class="card-header-title">Gig information</h4>
                             </div>
+                            <div class="card-body">
+                                <div class="card card-sm mb-4">
+                                    <img class="card-img-top" src="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" alt="Post AD">
 
-                            <div class="mb-4">
-                                <label for="productNameLabel" class="form-label">Gig title</label>
-                                <input type="text" class="form-control" name="title" id="productNameLabel" value="<?php echo $title; ?>">
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label for="SKULabel" class="form-label">Pay Out</label>
-                                        <input type="text" class="form-control" name="SKU" readonly="" value="<?php echo $payOut; ?>">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label for="weightLabel" class="form-label">Commission</label>
-
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="weightName" readonly="" value="<?php echo $commission; ?>">
-                                            <button class="js-clipboard input-group-append input-group-text" data-bs-toggle="tooltip" data-bs-original-title="Percentage">
-                                            <i id="apiKeyCodeIcon3" class="bi-percent"></i>
-                                            </button>
+                                    <div class="card-body">
+                                        <div class="row col-divider text-center">
+                                            <div class="col">
+                                                <a class="text-body" href="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                                    <i class="bi-eye"></i> view post ad
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label for="SKULabel" class="form-label">Categories</label>
-                                        <input type="text" class="form-control" name="SKU" readonly="" value="<?php echo $categories; ?>">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label for="SKULabel" class="form-label">Youtube Link</label>
-
-                                        <div class="input-group">
-                                            <input id="apiKeyCode3" type="text" class="form-control" readonly="" value="<?php echo $youtubeLink; ?>">
-                                            <a class="js-clipboard input-group-append input-group-text" href="javascript:;" data-bs-toggle="tooltip" data-hs-clipboard-options="{
-                                                &quot;type&quot;: &quot;tooltip&quot;,
-                                                &quot;successText&quot;: &quot;Copied!&quot;,
-                                                &quot;contentTarget&quot;: &quot;#apiKeyCode3&quot;,
-                                                &quot;classChangeTarget&quot;: &quot;#apiKeyCodeIcon3&quot;,
-                                                &quot;defaultClass&quot;: &quot;bi-clipboard&quot;,
-                                                &quot;successClass&quot;: &quot;bi-check&quot;
-                                            }" aria-label="Copy to clipboard" data-bs-original-title="Copy to clipboard">
-                                            <i id="apiKeyCodeIcon3" class="bi-clipboard"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label for="SKULabel" class="form-label">Website Link</label>
-
-                                        <div class="input-group">
-                                            <input id="apiKeyCode3" type="text" class="form-control" readonly="" value="<?php echo $website; ?>">
-                                            <a class="js-clipboard input-group-append input-group-text" href="javascript:;" data-bs-toggle="tooltip" data-hs-clipboard-options="{
-                                                &quot;type&quot;: &quot;tooltip&quot;,
-                                                &quot;successText&quot;: &quot;Copied!&quot;,
-                                                &quot;contentTarget&quot;: &quot;#apiKeyCode3&quot;,
-                                                &quot;classChangeTarget&quot;: &quot;#apiKeyCodeIcon3&quot;,
-                                                &quot;defaultClass&quot;: &quot;bi-clipboard&quot;,
-                                                &quot;successClass&quot;: &quot;bi-check&quot;
-                                            }" aria-label="Copy to clipboard" data-bs-original-title="Copy to clipboard">
-                                            <i id="apiKeyCodeIcon3" class="bi-clipboard"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="mb-4">
-                                        <label for="SKULabel" class="form-label">Other Link</label>
-
-                                        <div class="input-group">
-                                            <input id="apiKeyCode3" type="text" class="form-control" readonly="" value="<?php echo $otherLink; ?>">
-                                            <a class="js-clipboard input-group-append input-group-text" href="javascript:;" data-bs-toggle="tooltip" data-hs-clipboard-options="{
-                                                &quot;type&quot;: &quot;tooltip&quot;,
-                                                &quot;successText&quot;: &quot;Copied!&quot;,
-                                                &quot;contentTarget&quot;: &quot;#apiKeyCode3&quot;,
-                                                &quot;classChangeTarget&quot;: &quot;#apiKeyCodeIcon3&quot;,
-                                                &quot;defaultClass&quot;: &quot;bi-clipboard&quot;,
-                                                &quot;successClass&quot;: &quot;bi-check&quot;
-                                            }" aria-label="Copy to clipboard" data-bs-original-title="Copy to clipboard">
-                                            <i id="apiKeyCodeIcon3" class="bi-clipboard"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12">
                                 <div class="mb-4">
-                                    <label class="form-label">Description</label>
-                                    <div class="quill-custom">
-                                        <div class="js-quill ql-container ql-snow hs-quill-initialized" style="height: 15rem;" data-hs-quill-options="{
-                                            &quot;placeholder&quot;: &quot;Type your description...&quot;,
-                                            &quot;modules&quot;: {
-                                                &quot;toolbar&quot;: [
-                                                [&quot;bold&quot;, &quot;italic&quot;, &quot;underline&quot;, &quot;strike&quot;, &quot;link&quot;, &quot;image&quot;, &quot;blockquote&quot;, &quot;code&quot;, {&quot;list&quot;: &quot;bullet&quot;}]
-                                                ]
-                                            }
-                                            }">
-                                            <div class="ql-editor" data-gramm="false" contenteditable="true" data-placeholder="Type your description...">
-                                                <p><?php echo $gigDescription; ?></p>
+                                    <label for="productNameLabel" class="form-label">Gig title</label>
+                                    <input type="text" class="form-control" name="title" id="productNameLabel" value="<?php echo $title; ?>">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <label for="SKULabel" class="form-label">Pay Out</label>
+                                            <input type="text" class="form-control" name="SKU" readonly="" value="<?php echo $payOut; ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <label for="weightLabel" class="form-label">Commission</label>
+
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="weightName" readonly="" value="<?php echo $commission; ?>">
+                                                <button class="js-clipboard input-group-append input-group-text" data-bs-toggle="tooltip" data-bs-original-title="Percentage">
+                                                <i id="apiKeyCodeIcon3" class="bi-percent"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <label for="SKULabel" class="form-label">Categories</label>
+                                            <input type="text" class="form-control" name="SKU" readonly="" value="<?php echo $categories; ?>">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <label for="SKULabel" class="form-label">Youtube Link</label>
+
+                                            <div class="input-group">
+                                                <input id="apiKeyCode3" type="text" class="form-control" readonly="" value="<?php echo $youtubeLink; ?>">
+                                                <a class="js-clipboard input-group-append input-group-text" href="javascript:;" data-bs-toggle="tooltip" data-hs-clipboard-options="{
+                                                    &quot;type&quot;: &quot;tooltip&quot;,
+                                                    &quot;successText&quot;: &quot;Copied!&quot;,
+                                                    &quot;contentTarget&quot;: &quot;#apiKeyCode3&quot;,
+                                                    &quot;classChangeTarget&quot;: &quot;#apiKeyCodeIcon3&quot;,
+                                                    &quot;defaultClass&quot;: &quot;bi-clipboard&quot;,
+                                                    &quot;successClass&quot;: &quot;bi-check&quot;
+                                                }" aria-label="Copy to clipboard" data-bs-original-title="Copy to clipboard">
+                                                <i id="apiKeyCodeIcon3" class="bi-clipboard"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <label for="SKULabel" class="form-label">Website Link</label>
+
+                                            <div class="input-group">
+                                                <input id="apiKeyCode3" type="text" class="form-control" readonly="" value="<?php echo $website; ?>">
+                                                <a class="js-clipboard input-group-append input-group-text" href="javascript:;" data-bs-toggle="tooltip" data-hs-clipboard-options="{
+                                                    &quot;type&quot;: &quot;tooltip&quot;,
+                                                    &quot;successText&quot;: &quot;Copied!&quot;,
+                                                    &quot;contentTarget&quot;: &quot;#apiKeyCode3&quot;,
+                                                    &quot;classChangeTarget&quot;: &quot;#apiKeyCodeIcon3&quot;,
+                                                    &quot;defaultClass&quot;: &quot;bi-clipboard&quot;,
+                                                    &quot;successClass&quot;: &quot;bi-check&quot;
+                                                }" aria-label="Copy to clipboard" data-bs-original-title="Copy to clipboard">
+                                                <i id="apiKeyCodeIcon3" class="bi-clipboard"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <label for="SKULabel" class="form-label">Other Link</label>
+
+                                            <div class="input-group">
+                                                <input id="apiKeyCode3" type="text" class="form-control" readonly="" value="<?php echo $otherLink; ?>">
+                                                <a class="js-clipboard input-group-append input-group-text" href="javascript:;" data-bs-toggle="tooltip" data-hs-clipboard-options="{
+                                                    &quot;type&quot;: &quot;tooltip&quot;,
+                                                    &quot;successText&quot;: &quot;Copied!&quot;,
+                                                    &quot;contentTarget&quot;: &quot;#apiKeyCode3&quot;,
+                                                    &quot;classChangeTarget&quot;: &quot;#apiKeyCodeIcon3&quot;,
+                                                    &quot;defaultClass&quot;: &quot;bi-clipboard&quot;,
+                                                    &quot;successClass&quot;: &quot;bi-check&quot;
+                                                }" aria-label="Copy to clipboard" data-bs-original-title="Copy to clipboard">
+                                                <i id="apiKeyCodeIcon3" class="bi-clipboard"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="mb-4">
+                                        <label class="form-label">Description</label>
+                                        <div class="quill-custom">
+                                            <div class="js-quill ql-container ql-snow hs-quill-initialized" style="height: 15rem;" data-hs-quill-options="{
+                                                &quot;placeholder&quot;: &quot;Type your description...&quot;,
+                                                &quot;modules&quot;: {
+                                                    &quot;toolbar&quot;: [
+                                                    [&quot;bold&quot;, &quot;italic&quot;, &quot;underline&quot;, &quot;strike&quot;, &quot;link&quot;, &quot;image&quot;, &quot;blockquote&quot;, &quot;code&quot;, {&quot;list&quot;: &quot;bullet&quot;}]
+                                                    ]
+                                                }
+                                                }">
+                                                <div class="ql-editor" data-gramm="false" contenteditable="true" data-placeholder="Type your description...">
+                                                    <p><?php echo $gigDescription; ?></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- End Card -->
-
-                    <!-- Card -->
-                    <div class="card mb-3 mb-lg-5">
-                        <!-- Header -->
-                        <div class="card-header card-header-content-between">
-                        <h4 class="card-header-title">Media</h4>
-
-                        <!-- Dropdown -->
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-sm" id="mediaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Add media from URL <i class="bi-chevron-down"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end mt-1">
-                            <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#addImageFromURLModal">
-                                <i class="bi-link dropdown-item-icon"></i> Add image from URL
-                            </a>
-                            <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#embedVideoModal">
-                                <i class="bi-youtube dropdown-item-icon"></i> Embed video
-                            </a>
-                            </div>
-                        </div>
-                        <!-- End Dropdown -->
                         </div>
                     </div>
                 </div>
