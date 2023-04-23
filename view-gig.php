@@ -60,6 +60,7 @@ include "./components/side-navbar.php";
 
                     <h1 class="page-header-title"><?php echo $title; ?></h1>
                     status: <span class="badge <?php echo $class; ?> <?php echo $text; ?>"><?php echo $status; ?></span>
+                    <span class="badge bg-soft-success text-success">testing</span>
                 </div>
 
                 <div class="card mb-4">
