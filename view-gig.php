@@ -139,6 +139,20 @@ include "./components/side-navbar.php";
                             <h4 class="card-header-title">Gig information</h4>
                         </div>
                         <div class="card-body">
+                            <div class="card card-sm mb-4">
+                                <img class="card-img-top" src="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" alt="Post AD">
+
+                                <div class="card-body">
+                                    <div class="row col-divider text-center">
+                                        <div class="col">
+                                            <a class="text-body" href="https://sidehuzzlecanada.com/<?php echo $postAD; ?>" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                                <i class="bi-eye"></i> view post ad
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="mb-4">
                                 <label for="productNameLabel" class="form-label">Gig title</label>
                                 <input type="text" class="form-control" name="title" id="productNameLabel" value="<?php echo $title; ?>">
@@ -279,147 +293,6 @@ include "./components/side-navbar.php";
                         </div>
                         <!-- End Dropdown -->
                         </div>
-                        <!-- End Header -->
-
-                        <!-- Body -->
-                        <div class="card-body">
-                        <!-- Gallery -->
-                        <div id="fancyboxGallery" class="js-fancybox row justify-content-sm-center gx-3">
-                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
-                            <!-- Card -->
-                            <div class="card card-sm">
-                                <img class="card-img-top" src="./assets/img/400x400/img7.jpg" alt="Image Description">
-
-                                <div class="card-body">
-                                <div class="row col-divider text-center">
-                                    <div class="col">
-                                    <a class="text-body" href="./assets/img/725x1080/img1.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
-                                        <i class="bi-eye"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-
-                                    <div class="col">
-                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                        <i class="bi-trash"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Card -->
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
-                            <!-- Card -->
-                            <div class="card card-sm">
-                                <img class="card-img-top" src="./assets/img/400x400/img8.jpg" alt="Image Description">
-
-                                <div class="card-body">
-                                <div class="row col-divider text-center">
-                                    <div class="col">
-                                    <a class="text-body" href="./assets/img/1920x1080/img1.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
-                                        <i class="bi-eye"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-
-                                    <div class="col">
-                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                        <i class="bi-trash"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Card -->
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
-                            <!-- Card -->
-                            <div class="card card-sm">
-                                <img class="card-img-top" src="./assets/img/400x400/img9.jpg" alt="Image Description">
-
-                                <div class="card-body">
-                                <div class="row col-divider text-center">
-                                    <div class="col">
-                                    <a class="text-body" href="./assets/img/1920x1080/img2.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
-                                        <i class="bi-eye"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-
-                                    <div class="col">
-                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                        <i class="bi-trash"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Card -->
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
-                            <!-- Card -->
-                            <div class="card card-sm">
-                                <img class="card-img-top" src="./assets/img/400x400/img10.jpg" alt="Image Description">
-
-                                <div class="card-body">
-                                <div class="row col-divider text-center">
-                                    <div class="col">
-                                    <a class="text-body" href="./assets/img/1920x1080/img3.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
-                                        <i class="bi-eye"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-
-                                    <div class="col">
-                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
-                                        <i class="bi-trash"></i>
-                                    </a>
-                                    </div>
-                                    <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Card -->
-                            </div>
-                            <!-- End Col -->
-                        </div>
-                        <!-- End Gallery -->
-
-                        <!-- Dropzone -->
-                        <div id="attachFilesNewProjectLabel" class="js-dropzone dz-dropzone dz-dropzone-card dz-clickable">
-                            <div class="dz-message">
-                            <img class="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="default">
-                            <img class="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations-light/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="dark">
-
-                            <h5>Drag and drop your file here</h5>
-
-                            <p class="mb-2">or</p>
-
-                            <span class="btn btn-white btn-sm">Browse files</span>
-                            </div>
-                        </div>
-                        <!-- End Dropzone -->
-                        </div>
-                        <!-- Body -->
-                    </div>
                     </div>
                 </div>
                 <?php
