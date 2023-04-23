@@ -73,28 +73,22 @@ include "./components/side-navbar.php";
 
                     <ul class="nav nav-tabs align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link " href="./user-profile.html">Gig Details</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="./user-profile-teams.html">Teams</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="./user-profile-connections.html">Connections</a>
+                            <a class="nav-link active" href="./user-profile.html">Gig Details</a>
                         </li>
 
                     <li class="nav-item ms-auto">
                         <div class="d-flex gap-2">
-                            <div class="form-check form-check-switch">
-                                <input class="form-check-input" type="checkbox" value="" id="connectCheckbox">
-                                <label class="form-check-label btn btn-sm" for="connectCheckbox">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                </label>
-                            </div>
+                            <form>
+                                <button class="btn btn-outline-success btn-sm <?php if($status=='Approved'){echo 'd-none';}else{ echo'd-unset';}?>" name="">
+                                    <i class="bi-check"></i> Approve
+                                </button>
+                                <button class="btn btn-danger btn-sm <?php if($status=='Approved'){echo 'd-none';}elseif($status=='Banned'){echo 'd-none';}else{ echo'd-unset';}?>" name="">
+                                    <i class="bi-x"></i> Ban Gig
+                                </button>
+                                <button class="btn btn-danger btn-sm <?php if($status=='Pending'){echo 'd-none';}elseif($status=='Banned'){echo 'd-unset';}else{ echo'd-unset';}?>" name="">
+                                    <i class="bi-trash"></i> Delete
+                                </button>
+                            </form>
 
                             <div class="dropdown nav-scroller-dropdown">
                                 <button type="button" class="btn btn-white btn-icon btn-sm" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -129,1182 +123,254 @@ include "./components/side-navbar.php";
                 </div>
                 <!-- End Nav -->
 
-                <!-- Filter -->
-                <div class="row align-items-center mb-5">
-                    <div class="col">
-                    <h3 class="mb-0">7 connections</h3>
+                <div class="row">
+                    <div class="col-lg-12">
+                    <!-- Card -->
+                    <div class="card mb-3 mb-lg-5">
+                        <!-- Header -->
+                        <div class="card-header">
+                        <h4 class="card-header-title">Product information</h4>
+                        </div>
+                        <!-- End Header -->
+
+                        <!-- Body -->
+                        <div class="card-body">
+                        <!-- Form -->
+                        <div class="mb-4">
+                            <label for="productNameLabel" class="form-label">Name <i class="bi-question-circle text-body ms-1" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Products are the goods or services you sell." data-bs-original-title="Products are the goods or services you sell."></i></label>
+
+                            <input type="text" class="form-control" name="productName" id="productNameLabel" placeholder="Shirt, t-shirts, etc." aria-label="Shirt, t-shirts, etc." value="Tiro track jacket">
+                        </div>
+                        <!-- End Form -->
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                            <!-- Form -->
+                            <div class="mb-4">
+                                <label for="SKULabel" class="form-label">SKU</label>
+
+                                <input type="text" class="form-control" name="SKU" id="SKULabel" placeholder="eg. 348121032" aria-label="eg. 348121032" value="124617209">
+                            </div>
+                            <!-- End Form -->
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-sm-6">
+                            <!-- Form -->
+                            <div class="mb-4">
+                                <label for="weightLabel" class="form-label">Weight</label>
+
+                                <div class="input-group">
+                                <input type="text" class="form-control" name="weightName" id="weightLabel" placeholder="0.0" aria-label="0.0" value="0.2">
+                                <div class="input-group-append">
+                                    <!-- Select -->
+                                    <div class="tom-select-custom tom-select-custom-end">
+                                    <select class="js-select form-select tomselected ts-hidden-accessible" data-hs-tom-select-options="{
+                                                &quot;searchInDropdown&quot;: false,
+                                                &quot;hideSearch&quot;: true,
+                                                &quot;dropdownWidth&quot;: &quot;6rem&quot;
+                                            }" id="tomselect-1" tabindex="-1">
+                                        <option value="lb">lb</option>
+                                        <option value="oz">oz</option>
+                                        
+                                        <option value="g">g</option>
+                                    <option value="kg" selected="">kg</option></select><div class="ts-wrapper js-select form-select single plugin-change_listener plugin-hs_smart_position input-hidden full has-items"><div class="ts-control"><div data-value="kg" class="item" data-ts-item="">kg</div></div><div class="tom-select-custom"><div class="ts-dropdown single plugin-change_listener plugin-hs_smart_position" style="display: none;"><div role="listbox" tabindex="-1" class="ts-dropdown-content" id="tomselect-1-ts-dropdown"></div></div></div></div>
+                                    </div>
+                                    <!-- End Select -->
+                                </div>
+                                </div>
+
+                                <small class="form-text">Used to calculate shipping rates at checkout and label prices during fulfillment.</small>
+                            </div>
+                            <!-- End Form -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+
+                        <label class="form-label">Description <span class="form-label-secondary">(Optional)</span></label>
+
+                        <!-- Quill -->
+                        <div class="quill-custom">
+                            <div class="ql-toolbar ql-snow"><span class="ql-formats"><button type="button" class="ql-bold"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"></path> <path class="ql-stroke" d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"></path> </svg></button><button type="button" class="ql-italic"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line> <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line> <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line> </svg></button><button type="button" class="ql-underline"><svg viewBox="0 0 18 18"> <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path> <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect> </svg></button><button type="button" class="ql-strike"><svg viewBox="0 0 18 18"> <line class="ql-stroke ql-thin" x1="15.5" x2="2.5" y1="8.5" y2="9.5"></line> <path class="ql-fill" d="M9.007,8C6.542,7.791,6,7.519,6,6.5,6,5.792,7.283,5,9,5c1.571,0,2.765.679,2.969,1.309a1,1,0,0,0,1.9-.617C13.356,4.106,11.354,3,9,3,6.2,3,4,4.538,4,6.5a3.2,3.2,0,0,0,.5,1.843Z"></path> <path class="ql-fill" d="M8.984,10C11.457,10.208,12,10.479,12,11.5c0,0.708-1.283,1.5-3,1.5-1.571,0-2.765-.679-2.969-1.309a1,1,0,1,0-1.9.617C4.644,13.894,6.646,15,9,15c2.8,0,5-1.538,5-3.5a3.2,3.2,0,0,0-.5-1.843Z"></path> </svg></button><button type="button" class="ql-link"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line> <path class="ql-even ql-stroke" d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"></path> <path class="ql-even ql-stroke" d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z"></path> </svg></button><button type="button" class="ql-image"><svg viewBox="0 0 18 18"> <rect class="ql-stroke" height="10" width="12" x="3" y="4"></rect> <circle class="ql-fill" cx="6" cy="7" r="1"></circle> <polyline class="ql-even ql-fill" points="5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12"></polyline> </svg></button><button type="button" class="ql-blockquote"><svg viewBox="0 0 18 18"> <rect class="ql-fill ql-stroke" height="3" width="3" x="4" y="5"></rect> <rect class="ql-fill ql-stroke" height="3" width="3" x="11" y="5"></rect> <path class="ql-even ql-fill ql-stroke" d="M7,8c0,4.031-3,5-3,5"></path> <path class="ql-even ql-fill ql-stroke" d="M14,8c0,4.031-3,5-3,5"></path> </svg></button><button type="button" class="ql-code"><svg viewBox="0 0 18 18"> <polyline class="ql-even ql-stroke" points="5 7 3 9 5 11"></polyline> <polyline class="ql-even ql-stroke" points="13 7 15 9 13 11"></polyline> <line class="ql-stroke" x1="10" x2="8" y1="5" y2="13"></line> </svg></button><button type="button" class="ql-list" value="bullet"><svg viewBox="0 0 18 18"> <line class="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line> <line class="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line> <line class="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line> <line class="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line> <line class="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line> <line class="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line> </svg></button></span></div><div class="js-quill ql-container ql-snow hs-quill-initialized" style="height: 15rem;" data-hs-quill-options="{
+                                &quot;placeholder&quot;: &quot;Type your description...&quot;,
+                                &quot;modules&quot;: {
+                                    &quot;toolbar&quot;: [
+                                    [&quot;bold&quot;, &quot;italic&quot;, &quot;underline&quot;, &quot;strike&quot;, &quot;link&quot;, &quot;image&quot;, &quot;blockquote&quot;, &quot;code&quot;, {&quot;list&quot;: &quot;bullet&quot;}]
+                                    ]
+                                }
+                                }"><div class="ql-editor" data-gramm="false" contenteditable="true" data-placeholder="Type your description..."><p>Train hard. Stay dry. This soccer jacket is made of soft, sweat-wicking fabric that keeps you moving on the practice field. Stretch panels at the elbows and sides give you a full range of motion as you work.</p><p><br></p><h3>Specifications</h3><ul><li>Regular fit is wider at the body, with a straight silhouette</li><li>Ribbed stand-up collar</li><li>Long sleeves with ribbed cuffs</li><li>100% polyester doubleknit</li><li>Front zip pockets; Full zip; Ribbing details; Ribbed hem</li></ul></div><div class="ql-clipboard" contenteditable="true" tabindex="-1"></div><div class="ql-tooltip ql-hidden"><a class="ql-preview" rel="noopener noreferrer" target="_blank" href="about:blank"></a><input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL"><a class="ql-action"></a><a class="ql-remove"></a></div></div>
+                        </div>
+                        <!-- End Quill -->
+                        </div>
+                        <!-- Body -->
                     </div>
-                    <!-- End Col -->
+                    <!-- End Card -->
 
-                    <div class="col-auto">
-                    <!-- Nav -->
-                    <ul class="nav nav-segment" id="connectionsTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="grid-tab" data-bs-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true" title="Column view">
-                            <i class="bi-grid"></i>
-                        </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="list-tab" data-bs-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false" title="List view" tabindex="-1">
-                            <i class="bi-list"></i>
-                        </a>
-                        </li>
-                    </ul>
-                    <!-- End Nav -->
+                    <!-- Card -->
+                    <div class="card mb-3 mb-lg-5">
+                        <!-- Header -->
+                        <div class="card-header card-header-content-between">
+                        <h4 class="card-header-title">Media</h4>
+
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-ghost-secondary btn-sm" id="mediaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Add media from URL <i class="bi-chevron-down"></i>
+                            </button>
+
+                            <div class="dropdown-menu dropdown-menu-end mt-1">
+                            <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#addImageFromURLModal">
+                                <i class="bi-link dropdown-item-icon"></i> Add image from URL
+                            </a>
+                            <a class="dropdown-item" href="javascript:;" data-bs-toggle="modal" data-bs-target="#embedVideoModal">
+                                <i class="bi-youtube dropdown-item-icon"></i> Embed video
+                            </a>
+                            </div>
+                        </div>
+                        <!-- End Dropdown -->
+                        </div>
+                        <!-- End Header -->
+
+                        <!-- Body -->
+                        <div class="card-body">
+                        <!-- Gallery -->
+                        <div id="fancyboxGallery" class="js-fancybox row justify-content-sm-center gx-3">
+                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
+                            <!-- Card -->
+                            <div class="card card-sm">
+                                <img class="card-img-top" src="./assets/img/400x400/img7.jpg" alt="Image Description">
+
+                                <div class="card-body">
+                                <div class="row col-divider text-center">
+                                    <div class="col">
+                                    <a class="text-body" href="./assets/img/725x1080/img1.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                        <i class="bi-eye"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col">
+                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
+                                        <i class="bi-trash"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+                                </div>
+                                <!-- End Row -->
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                            <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
+                            <!-- Card -->
+                            <div class="card card-sm">
+                                <img class="card-img-top" src="./assets/img/400x400/img8.jpg" alt="Image Description">
+
+                                <div class="card-body">
+                                <div class="row col-divider text-center">
+                                    <div class="col">
+                                    <a class="text-body" href="./assets/img/1920x1080/img1.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                        <i class="bi-eye"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col">
+                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
+                                        <i class="bi-trash"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+                                </div>
+                                <!-- End Row -->
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                            <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
+                            <!-- Card -->
+                            <div class="card card-sm">
+                                <img class="card-img-top" src="./assets/img/400x400/img9.jpg" alt="Image Description">
+
+                                <div class="card-body">
+                                <div class="row col-divider text-center">
+                                    <div class="col">
+                                    <a class="text-body" href="./assets/img/1920x1080/img2.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                        <i class="bi-eye"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col">
+                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
+                                        <i class="bi-trash"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+                                </div>
+                                <!-- End Row -->
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                            <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+
+                            <div class="col-6 col-sm-4 col-md-3 mb-3 mb-lg-5">
+                            <!-- Card -->
+                            <div class="card card-sm">
+                                <img class="card-img-top" src="./assets/img/400x400/img10.jpg" alt="Image Description">
+
+                                <div class="card-body">
+                                <div class="row col-divider text-center">
+                                    <div class="col">
+                                    <a class="text-body" href="./assets/img/1920x1080/img3.jpg" data-bs-toggle="tooltip" data-bs-placement="top" data-fslightbox="gallery" aria-label="View" data-bs-original-title="View">
+                                        <i class="bi-eye"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+
+                                    <div class="col">
+                                    <a class="text-danger" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-bs-original-title="Delete">
+                                        <i class="bi-trash"></i>
+                                    </a>
+                                    </div>
+                                    <!-- End Col -->
+                                </div>
+                                <!-- End Row -->
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                            <!-- End Card -->
+                            </div>
+                            <!-- End Col -->
+                        </div>
+                        <!-- End Gallery -->
+
+                        <!-- Dropzone -->
+                        <div id="attachFilesNewProjectLabel" class="js-dropzone dz-dropzone dz-dropzone-card dz-clickable">
+                            <div class="dz-message">
+                            <img class="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="default">
+                            <img class="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations-light/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="dark">
+
+                            <h5>Drag and drop your file here</h5>
+
+                            <p class="mb-2">or</p>
+
+                            <span class="btn btn-white btn-sm">Browse files</span>
+                            </div>
+                        </div>
+                        <!-- End Dropzone -->
+                        </div>
+                        <!-- Body -->
                     </div>
-                    <!-- End Col -->
-                </div>
-                <!-- End Filter -->
-
-                <!-- Tab Content -->
-                <div class="tab-content" id="connectionsTabContent">
-                    <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-                    <!-- Connections -->
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3">
-                        <div class="col mb-3 mb-lg-5">
-                        <!-- Card -->
-                        <div class="card h-100">
-                            <div class="card-pinned">
-                            <div class="card-pinned-top-end">
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsDropdown1">
-                                    <a class="dropdown-item" href="#">Share connection</a>
-                                    <a class="dropdown-item" href="#">Block connection</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                </div>
-                                </div>
-                                <!-- End Dropdown -->
-                            </div>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body text-center">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl avatar-soft-primary avatar-circle avatar-centered mb-3">
-                                <span class="avatar-initials">R</span>
-                                <span class="avatar-status avatar-sm-status avatar-status-warning"></span>
-                            </div>
-                            <!-- End Avatar -->
-
-                            <h3 class="mb-1">
-                                <a class="text-dark" href="#">Rachel Doe</a>
-                            </h3>
-
-                            <div class="mb-3">
-                                <i class="bi-building me-1"></i>
-                                <span>Design</span>
-                            </div>
-
-                            <!-- Badges -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">UI/UX</a></li>
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Sketch</a></li>
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Figma</a></li>
-                            </ul>
-                            <!-- End Badges -->
-                            </div>
-                            <!-- End Body -->
-
-                            <!-- Footer -->
-                            <div class="card-footer">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto py-1">
-                                <a class="fs-6 text-body" href="#">25 connections</a>
-                                </div>
-
-                                <div class="col-auto py-1">
-                                <!-- Form Check -->
-                                <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox1" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsCheckbox1">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                    </label>
-                                </div>
-                                <!-- End Form Check -->
-                                </div>
-                            </div>
-                            </div>
-                            <!-- End Footer -->
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3 mb-lg-5">
-                        <!-- Card -->
-                        <div class="card h-100">
-                            <div class="card-pinned">
-                            <div class="card-pinned-top-end">
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsDropdown2">
-                                    <a class="dropdown-item" href="#">Share connection</a>
-                                    <a class="dropdown-item" href="#">Block connection</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                </div>
-                                </div>
-                                <!-- End Dropdown -->
-                            </div>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body text-center">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl avatar-circle avatar-centered mb-3">
-                                <img class="avatar-img" src="./assets/img/160x160/img8.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                            </div>
-                            <!-- End Avatar -->
-
-                            <h3 class="mb-1">
-                                <a class="text-dark" href="#">Isabella Finley</a>
-                            </h3>
-
-                            <div class="mb-3">
-                                <i class="bi-building me-1"></i>
-                                <span>FrontApp</span>
-                            </div>
-
-                            <!-- Badges -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Human resources</a></li>
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Support</a></li>
-                            </ul>
-                            <!-- End Badges -->
-                            </div>
-                            <!-- End Body -->
-
-                            <!-- Footer -->
-                            <div class="card-footer">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto py-1">
-                                <a class="fs-6 text-body" href="#">79 connections</a>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto py-1">
-                                <!-- Form Check -->
-                                <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox2" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsCheckbox2">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                    </label>
-                                </div>
-                                <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Row -->
-                            </div>
-                            <!-- End Footer -->
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3 mb-lg-5">
-                        <!-- Card -->
-                        <div class="card h-100">
-                            <div class="card-pinned">
-                            <div class="card-pinned-top-end">
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsDropdown3">
-                                    <a class="dropdown-item" href="#">Share connection</a>
-                                    <a class="dropdown-item" href="#">Block connection</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                </div>
-                                </div>
-                                <!-- End Dropdown -->
-                            </div>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body text-center">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl avatar-circle avatar-centered mb-3">
-                                <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-warning"></span>
-                            </div>
-                            <!-- End Avatar -->
-
-                            <h3 class="mb-1">
-                                <a class="text-dark" href="#">David Harrison</a>
-                            </h3>
-
-                            <div class="mb-3">
-                                <i class="bi-building me-1"></i>
-                                <span>Unassigned</span>
-                            </div>
-
-                            <!-- Badges -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Marketing</a></li>
-                            </ul>
-                            <!-- End Badges -->
-                            </div>
-                            <!-- End Body -->
-
-                            <!-- Footer -->
-                            <div class="card-footer">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto py-1">
-                                <a class="fs-6 text-body" href="#">0 connections</a>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto py-1">
-                                <!-- Form Check -->
-                                <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox3">
-                                    <label class="form-check-label btn btn-sm" for="connectionsCheckbox3">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                    </label>
-                                </div>
-                                <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Row -->
-                            </div>
-                            <!-- End Footer -->
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3 mb-lg-5">
-                        <!-- Card -->
-                        <div class="card h-100">
-                            <div class="card-pinned">
-                            <div class="card-pinned-top-end">
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsDropdown4" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsDropdown4">
-                                    <a class="dropdown-item" href="#">Share connection</a>
-                                    <a class="dropdown-item" href="#">Block connection</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                </div>
-                                </div>
-                                <!-- End Dropdown -->
-                            </div>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body text-center">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl avatar-soft-dark avatar-circle avatar-centered mb-3">
-                                <span class="avatar-initials">B</span>
-                                <span class="avatar-status avatar-sm-status avatar-status-danger"></span>
-                            </div>
-                            <!-- End Avatar -->
-
-                            <h3 class="mb-1">
-                                <a class="text-dark" href="#">Bob Dean</a>
-                            </h3>
-
-                            <div class="mb-3">
-                                <i class="bi-building me-1"></i>
-                                <span>Sales</span>
-                            </div>
-
-                            <!-- Badges -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Sales</a></li>
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Legal</a></li>
-                            </ul>
-                            <!-- End Badges -->
-                            </div>
-                            <!-- End Body -->
-
-                            <!-- Footer -->
-                            <div class="card-footer">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto py-1">
-                                <a class="fs-6 text-body" href="#">25 connections</a>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto py-1">
-                                <!-- Form Check -->
-                                <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox4">
-                                    <label class="form-check-label btn btn-sm" for="connectionsCheckbox4">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                    </label>
-                                </div>
-                                <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Row -->
-                            </div>
-                            <!-- End Footer -->
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3 mb-lg-5">
-                        <!-- Card -->
-                        <div class="card h-100">
-                            <div class="card-pinned">
-                            <div class="card-pinned-top-end">
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsDropdown5" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsDropdown5">
-                                    <a class="dropdown-item" href="#">Share connection</a>
-                                    <a class="dropdown-item" href="#">Block connection</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                </div>
-                                </div>
-                                <!-- End Dropdown -->
-                            </div>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body text-center">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl avatar-circle avatar-centered mb-3">
-                                <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                            </div>
-                            <!-- End Avatar -->
-
-                            <h3 class="mb-1">
-                                <a class="text-dark" href="#">Amanda Harvey</a>
-                            </h3>
-
-                            <div class="mb-3">
-                                <i class="bi-building me-1"></i>
-                                <span>Atlassian</span>
-                            </div>
-
-                            <!-- Badges -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Human resources</a></li>
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Legal</a></li>
-                            </ul>
-                            <!-- End Badges -->
-                            </div>
-                            <!-- End Body -->
-
-                            <!-- Footer -->
-                            <div class="card-footer">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto py-1">
-                                <a class="fs-6 text-body" href="#">3 connections</a>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto py-1">
-                                <!-- Form Check -->
-                                <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox5" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsCheckbox5">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                    </label>
-                                </div>
-                                <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Row -->
-                            </div>
-                            <!-- End Footer -->
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3 mb-lg-5">
-                        <!-- Card -->
-                        <div class="card h-100">
-                            <div class="card-pinned">
-                            <div class="card-pinned-top-end">
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsDropdown6" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsDropdown6">
-                                    <a class="dropdown-item" href="#">Share connection</a>
-                                    <a class="dropdown-item" href="#">Block connection</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                </div>
-                                </div>
-                                <!-- End Dropdown -->
-                            </div>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body text-center">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl avatar-circle avatar-centered mb-3">
-                                <img class="avatar-img" src="./assets/img/160x160/img5.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                            </div>
-                            <!-- End Avatar -->
-
-                            <h3 class="mb-1">
-                                <a class="text-dark" href="#">Finch Hoot</a>
-                            </h3>
-
-                            <div class="mb-3">
-                                <i class="bi-building me-1"></i>
-                                <span>Dev</span>
-                            </div>
-
-                            <!-- Badges -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">JS</a></li>
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Vue.js</a></li>
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">HTML5</a></li>
-                            </ul>
-                            <!-- End Badges -->
-                            </div>
-                            <!-- End Body -->
-
-                            <!-- Footer -->
-                            <div class="card-footer">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto py-1">
-                                <a class="fs-6 text-body" href="#">7 connections</a>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto py-1">
-                                <!-- Form Check -->
-                                <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox6" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsCheckbox6">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                    </label>
-                                </div>
-                                <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Row -->
-                            </div>
-                            <!-- End Footer -->
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3 mb-lg-5">
-                        <!-- Card -->
-                        <div class="card h-100">
-                            <div class="card-pinned">
-                            <div class="card-pinned-top-end">
-                                <!-- Dropdown -->
-                                <div class="dropdown">
-                                <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsDropdown7" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi-three-dots-vertical"></i>
-                                </button>
-
-                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsDropdown7">
-                                    <a class="dropdown-item" href="#">Share connection</a>
-                                    <a class="dropdown-item" href="#">Block connection</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="#">Delete</a>
-                                </div>
-                                </div>
-                                <!-- End Dropdown -->
-                            </div>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="card-body text-center">
-                            <!-- Avatar -->
-                            <div class="avatar avatar-xl avatar-circle avatar-centered mb-3">
-                                <img class="avatar-img" src="./assets/img/160x160/img6.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-danger"></span>
-                            </div>
-                            <!-- End Avatar -->
-
-                            <h3 class="mb-1">
-                                <a class="text-dark" href="#">Costa Quinn</a>
-                            </h3>
-
-                            <div class="mb-3">
-                                <i class="bi-building me-1"></i>
-                                <span>Research team</span>
-                            </div>
-
-                            <!-- Badges -->
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">SEO</a></li>
-                            </ul>
-                            <!-- End Badges -->
-                            </div>
-                            <!-- End Body -->
-
-                            <!-- Footer -->
-                            <div class="card-footer">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-auto py-1">
-                                <a class="fs-6 text-body" href="#">9 connections</a>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-auto py-1">
-                                <!-- Form Check -->
-                                <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsCheckbox7">
-                                    <label class="form-check-label btn btn-sm" for="connectionsCheckbox7">
-                                    <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                    </span>
-                                    <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                    </span>
-                                    </label>
-                                </div>
-                                <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Row -->
-                            </div>
-                            <!-- End Footer -->
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Connections -->
-                    </div>
-
-                    <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
-                    <div class="row row-cols-1">
-                        <div class="col mb-3">
-                        <!-- Card -->
-                        <div class="card card-body">
-                            <div class="d-flex align-items-md-center">
-                            <div class="flex-shrink-0">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-lg avatar-soft-primary avatar-circle">
-                                <span class="avatar-initials">R</span>
-                                <span class="avatar-status avatar-sm-status avatar-status-warning"></span>
-                                </div>
-                                <!-- End Avatar -->
-                            </div>
-
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                                    <h4 class="mb-1">
-                                    <a class="text-dark" href="#">Rachel Doe</a>
-                                    </h4>
-
-                                    <span class="d-block">
-                                    <i class="bi-building me-1"></i>
-                                    <span>Design</span>
-                                    </span>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-3 col-md-auto order-md-last text-end ms-n3">
-                                    <!-- Dropdown -->
-                                    <div class="dropdown">
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsListDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi-three-dots-vertical"></i>
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsListDropdown1">
-                                        <a class="dropdown-item" href="#">Rename project </a>
-                                        <a class="dropdown-item" href="#">Add to favorites</a>
-                                        <a class="dropdown-item" href="#">Archive project</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                    </div>
-                                    <!-- End Dropdown -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Badges -->
-                                    <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">UI/UX</a></li>
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Sketch</a></li>
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Figma</a></li>
-                                    </ul>
-                                    <!-- End Badges -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm-auto">
-                                    <!-- Form Check -->
-                                    <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsListCheckbox1" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsListCheckbox1">
-                                        <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                        </span>
-                                        <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                        </span>
-                                    </label>
-                                    </div>
-                                    <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                            </div>
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3">
-                        <!-- Card -->
-                        <div class="card card-body">
-                            <div class="d-flex align-items-md-center">
-                            <div class="flex-shrink-0">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-lg avatar-circle">
-                                <img class="avatar-img" src="./assets/img/160x160/img8.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                                </div>
-                                <!-- End Avatar -->
-                            </div>
-
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                                    <h4 class="mb-1">
-                                    <a class="text-dark" href="#">Isabella Finley</a>
-                                    </h4>
-
-                                    <span class="d-block">
-                                    <i class="bi-building me-1"></i>
-                                    <span>FrontApp</span>
-                                    </span>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-3 col-md-auto order-md-last text-end ms-n3">
-                                    <!-- Dropdown -->
-                                    <div class="dropdown">
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsListDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi-three-dots-vertical"></i>
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsListDropdown2">
-                                        <a class="dropdown-item" href="#">Rename project </a>
-                                        <a class="dropdown-item" href="#">Add to favorites</a>
-                                        <a class="dropdown-item" href="#">Archive project</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                    </div>
-                                    <!-- End Dropdown -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Badges -->
-                                    <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Human resources</a></li>
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Support</a></li>
-                                    </ul>
-                                    <!-- End Badges -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm-auto">
-                                    <!-- Form Check -->
-                                    <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsListCheckbox2" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsListCheckbox2">
-                                        <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                        </span>
-                                        <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                        </span>
-                                    </label>
-                                    </div>
-                                    <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                            </div>
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3">
-                        <!-- Card -->
-                        <div class="card card-body">
-                            <div class="d-flex align-items-md-center">
-                            <div class="flex-shrink-0">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-lg avatar-circle">
-                                <img class="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-warning"></span>
-                                </div>
-                                <!-- End Avatar -->
-                            </div>
-
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                                    <h4 class="mb-1">
-                                    <a class="text-dark" href="#">David Harrison</a>
-                                    </h4>
-
-                                    <span class="d-block">
-                                    <i class="bi-building me-1"></i>
-                                    <span>Unassigned</span>
-                                    </span>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-3 col-md-auto order-md-last text-end ms-n3">
-                                    <!-- Dropdown -->
-                                    <div class="dropdown">
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsListDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi-three-dots-vertical"></i>
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsListDropdown3">
-                                        <a class="dropdown-item" href="#">Rename project </a>
-                                        <a class="dropdown-item" href="#">Add to favorites</a>
-                                        <a class="dropdown-item" href="#">Archive project</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                    </div>
-                                    <!-- End Dropdown -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Badges -->
-                                    <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Marketing</a></li>
-                                    </ul>
-                                    <!-- End Badges -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm-auto">
-                                    <!-- Form Check -->
-                                    <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsListCheckbox3">
-                                    <label class="form-check-label btn btn-sm" for="connectionsListCheckbox3">
-                                        <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                        </span>
-                                        <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                        </span>
-                                    </label>
-                                    </div>
-                                    <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                            </div>
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3">
-                        <!-- Card -->
-                        <div class="card card-body">
-                            <div class="d-flex align-items-md-center">
-                            <div class="flex-shrink-0">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-lg avatar-soft-dark avatar-circle">
-                                <span class="avatar-initials">B</span>
-                                <span class="avatar-status avatar-sm-status avatar-status-danger"></span>
-                                </div>
-                                <!-- End Avatar -->
-                            </div>
-
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                                    <h4 class="mb-1">
-                                    <a class="text-dark" href="#">Bob Dean</a>
-                                    </h4>
-
-                                    <span class="d-block">
-                                    <i class="bi-building me-1"></i>
-                                    <span>Sales</span>
-                                    </span>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-3 col-md-auto order-md-last text-end ms-n3">
-                                    <!-- Dropdown -->
-                                    <div class="dropdown">
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsListDropdown4" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi-three-dots-vertical"></i>
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsListDropdown4">
-                                        <a class="dropdown-item" href="#">Rename project </a>
-                                        <a class="dropdown-item" href="#">Add to favorites</a>
-                                        <a class="dropdown-item" href="#">Archive project</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                    </div>
-                                    <!-- End Dropdown -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Badges -->
-                                    <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Sales</a></li>
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Legal</a></li>
-                                    </ul>
-                                    <!-- End Badges -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm-auto">
-                                    <!-- Form Check -->
-                                    <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsListCheckbox4">
-                                    <label class="form-check-label btn btn-sm" for="connectionsListCheckbox4">
-                                        <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                        </span>
-                                        <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                        </span>
-                                    </label>
-                                    </div>
-                                    <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                            </div>
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3">
-                        <!-- Card -->
-                        <div class="card card-body">
-                            <div class="d-flex align-items-md-center">
-                            <div class="flex-shrink-0">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-lg avatar-circle">
-                                <img class="avatar-img" src="./assets/img/160x160/img10.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                                </div>
-                                <!-- End Avatar -->
-                            </div>
-
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                                    <h4 class="mb-1">
-                                    <a class="text-dark" href="#">Amanda Harvey</a>
-                                    </h4>
-
-                                    <span class="d-block">
-                                    <i class="bi-building me-1"></i>
-                                    <span>Atlassian</span>
-                                    </span>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-3 col-md-auto order-md-last text-end ms-n3">
-                                    <!-- Dropdown -->
-                                    <div class="dropdown">
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsListDropdown5" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi-three-dots-vertical"></i>
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsListDropdown5">
-                                        <a class="dropdown-item" href="#">Rename project </a>
-                                        <a class="dropdown-item" href="#">Add to favorites</a>
-                                        <a class="dropdown-item" href="#">Archive project</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                    </div>
-                                    <!-- End Dropdown -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Badges -->
-                                    <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Human resources</a></li>
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Legal</a></li>
-                                    </ul>
-                                    <!-- End Badges -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm-auto">
-                                    <!-- Form Check -->
-                                    <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsListCheckbox5" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsListCheckbox5">
-                                        <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                        </span>
-                                        <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                        </span>
-                                    </label>
-                                    </div>
-                                    <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                            </div>
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3">
-                        <!-- Card -->
-                        <div class="card card-body">
-                            <div class="d-flex align-items-md-center">
-                            <div class="flex-shrink-0">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-lg avatar-circle">
-                                <img class="avatar-img" src="./assets/img/160x160/img5.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-success"></span>
-                                </div>
-                                <!-- End Avatar -->
-                            </div>
-
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                                    <h4 class="mb-1">
-                                    <a class="text-dark" href="#">Finch Hoot</a>
-                                    </h4>
-
-                                    <span class="d-block">
-                                    <i class="bi-building me-1"></i>
-                                    <span>Dev</span>
-                                    </span>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-3 col-md-auto order-md-last text-end ms-n3">
-                                    <!-- Dropdown -->
-                                    <div class="dropdown">
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsListDropdown6" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi-three-dots-vertical"></i>
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsListDropdown6">
-                                        <a class="dropdown-item" href="#">Rename project </a>
-                                        <a class="dropdown-item" href="#">Add to favorites</a>
-                                        <a class="dropdown-item" href="#">Archive project</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                    </div>
-                                    <!-- End Dropdown -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Badges -->
-                                    <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">JS</a></li>
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">Vue.js</a></li>
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">HTML5</a></li>
-                                    </ul>
-                                    <!-- End Badges -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm-auto">
-                                    <!-- Form Check -->
-                                    <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsListCheckbox6" checked="">
-                                    <label class="form-check-label btn btn-sm" for="connectionsListCheckbox6">
-                                        <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                        </span>
-                                        <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                        </span>
-                                    </label>
-                                    </div>
-                                    <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                            </div>
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col mb-3">
-                        <!-- Card -->
-                        <div class="card card-body">
-                            <div class="d-flex align-items-md-center">
-                            <div class="flex-shrink-0">
-                                <!-- Avatar -->
-                                <div class="avatar avatar-lg avatar-circle">
-                                <img class="avatar-img" src="./assets/img/160x160/img6.jpg" alt="Image Description">
-                                <span class="avatar-status avatar-sm-status avatar-status-danger"></span>
-                                </div>
-                                <!-- End Avatar -->
-                            </div>
-
-                            <div class="flex-grow-1 ms-3">
-                                <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                                    <h4 class="mb-1">
-                                    <a class="text-dark" href="#">Costa Quinn</a>
-                                    </h4>
-
-                                    <span class="d-block">
-                                    <i class="bi-building me-1"></i>
-                                    <span>Research team</span>
-                                    </span>
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-3 col-md-auto order-md-last text-end ms-n3">
-                                    <!-- Dropdown -->
-                                    <div class="dropdown">
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="connectionsListDropdown7" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi-three-dots-vertical"></i>
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="connectionsListDropdown7">
-                                        <a class="dropdown-item" href="#">Rename project </a>
-                                        <a class="dropdown-item" href="#">Add to favorites</a>
-                                        <a class="dropdown-item" href="#">Archive project</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                    </div>
-                                    <!-- End Dropdown -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Badges -->
-                                    <ul class="list-inline mb-0">
-                                    <li class="list-inline-item"><a class="badge bg-soft-secondary text-secondary p-2" href="#">SEO</a></li>
-                                    </ul>
-                                    <!-- End Badges -->
-                                </div>
-                                <!-- End Col -->
-
-                                <div class="col-sm-auto">
-                                    <!-- Form Check -->
-                                    <div class="form-check form-check-switch">
-                                    <input class="form-check-input" type="checkbox" value="" id="connectionsListCheckbox7">
-                                    <label class="form-check-label btn btn-sm" for="connectionsListCheckbox7">
-                                        <span class="form-check-default">
-                                        <i class="bi-person-plus-fill"></i> Connect
-                                        </span>
-                                        <span class="form-check-active">
-                                        <i class="bi-check-lg me-2"></i> Connected
-                                        </span>
-                                    </label>
-                                    </div>
-                                    <!-- End Form Check -->
-                                </div>
-                                <!-- End Col -->
-                                </div>
-                                <!-- End Row -->
-                            </div>
-                            </div>
-                        </div>
-                        <!-- End Card -->
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Row -->
                     </div>
                 </div>
                 <?php
