@@ -16,8 +16,8 @@ include "./components/side-navbar.php";
                 </div>
 
                 <?php
-                    $gig_id = $_GET['id'];
-                    $select_query = "SELECT * FROM gigs INNER JOIN users ON gigs.userID = users.id WHERE gigs.id = '$gig_id'";
+                    $id = $_GET['id'];
+                    $select_query = "SELECT * FROM gigs INNER JOIN users ON gigs.userID = users.id WHERE gigs.id = '$id'";
                     $result = mysqli_query($conn, $select_query);
                     if (mysqli_num_rows($result) > 0) {
                             // output data of each row
